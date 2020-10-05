@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Level Upgrade</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		let salary,maritalStatus,dateOfBirth;
+		do{
+			salary = prompt("Enter Salary : Numbers Only","20000");
+		}while(isNaN(salary) || salary == '');
+
+		do{
+			maritalStatus = prompt("Enter Marital Status \nEnter 1 for Married \nEnter 2 for Single ","1");
+		}while(isNaN(maritalStatus) || maritalStatus == '' || (maritalStatus < 1 && maritalStatus >2) );
+
+		do{
+			dateOfBirth = prompt("Enter dateOfBirth ","dd/mm/yyyy");
+		}while(dateOfBirth == '');
+
+		let currentDate = new Date();
+
+		let currentDay = currentDate.getDate();
+		let currentMonth = currentDate.getMonth() + 1;
+		let currentYear = currentDate.getFullYear();
+
+		let userDayOfBirth = dateOfBirth.slice(0, 2);
+		let userMonthOfBirth = dateOfBirth.slice(3, 5);
+		let userYearOfBirth = dateOfBirth.slice(6, 10);
+		if(salary <= 50000 && maritalStatus == 1){
+			if ((currentYear - userYearOfBirth) < 20) {
+				document.write('Sorry... !!! You are Ineligible for a level Upgrade');
+			}else if((currentYear - userYearOfBirth) > 20){
+				document.write('Congratulations...!!! You are Eligible for a level upgrade');
+			}else{
+				if(currentMonth < userMonthOfBirth){
+					document.write('Sorry... !!! You are Ineligible for a level Upgrade');
+				}else if(currentMonth > userMonthOfBirth){
+					document.write('Congratulations...!!! You are Eligible for a level upgrade');
+				}else{
+					if(currentDay >=userDayOfBirth){
+					document.write('Congratulations...!!! You are Eligible for a level upgrade');
+					}else{
+						document.write('Sorry... !!! You are Ineligible for a level Upgrade');
+					}
+				}
+			}
+		}else{
+			document.write('Sorry... !!! You are Ineligible for a level Upgrade');
+		}
+	</script>
+</body>
+</html>
